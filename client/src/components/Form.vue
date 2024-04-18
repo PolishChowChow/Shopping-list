@@ -13,7 +13,7 @@ const submitHandler = () => {
 </script>
 
 <template>
-  <form @submit.prevent="() => submitHandler">
+  <form @submit.prevent="() => submitHandler()">
     <input type="text" v-model="nameRef" ref="inputRef" />
     <button type="submit">+</button>
   </form>

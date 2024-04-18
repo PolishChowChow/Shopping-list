@@ -6,7 +6,7 @@ const { tasks } = defineProps<{ tasks: TaskType[] }>();
 
 <template>
   <h2>Tasks</h2>
-  <Task v-for="task in tasks" :key="task._id" :task="task"/>
+  <Task v-for="task in tasks" :key="task.id" :task="task" />
 </template>
 
 <style scoped></style>

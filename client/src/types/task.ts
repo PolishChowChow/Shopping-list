@@ -1,4 +1,4 @@
 export type TaskType = {
-    _id: string,
+    id: string,
     name: string,
 }
