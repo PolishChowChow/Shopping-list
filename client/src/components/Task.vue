@@ -17,19 +17,33 @@ const { mutateAsync: deleteTask } = useMutation({
         })
     }
 })
+const { mutateAsync: modifyTask } = useMutation({
+    mutationFn: async(id: string) => {
+        console.log(id)
+        const response = await axios.put(`http://localhost:3000/tasks/${id}`,{
+            name: inputRef.value
+        })
+        return response.data.status
+    },
+    onSuccess: () => {
+        isEditable.value = false
+        client.invalidateQueries({
+            queryKey: ["tasks"]
+        })
+    }
+})
 
 const isEditable = ref(false)
 const inputRef = ref("")
 const editTask = () => {
     isEditable.value = false
+    modifyTask(task.id)
 }
 const toggleForm = () => {
     isEditable.value = true
 }
 
 onMounted(()=>{
-    console.log(task.id);
-    
     inputRef.value = task.name
 })
 </script>
